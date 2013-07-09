@@ -38,109 +38,211 @@
 			<div class="slides">
 				<section>
 					<h1>HTML5 Video APIs</h1>
-					<h3>(That’s plural folks)</h3>
 					<p>
 						<small><a href="http://twitter.com/dharden">@dharden</a></small>
 					</p>
 				</section>
         <section>
-          <h1>Intro</h1>
-          <h3>what are we talking about?</h3>
+          <h3>What are we talking about?</h3>
         </section>
 
         <section>
-          <h1>JavaScript, son!</h1>
+        <h2>Warning!</h2>
+        <p>This is bleeding edge technology.</p>
+        <img src="images/bleedingedge.jpg" alt="Bleeding Edge" />
         </section>
-
         <section>
           <h3>Spoilers: It doesn't work in Internet Explorer</h3>
         </section>
 
         <section>
-          <h1>getUserMedia</h1>
-          <h3>Interesting API methods</h3>
+          <h3>navigator.getUserMedia</h3>
         </section>
 
         <section>
-            <pre>
-              <code data-trim>
-              // Browser prefixes because we want to be
-              // cross-browser and future proof here.
-              navigator.getUserMediaBrowserCompat = (
-                navigator.getUserMedia ||
-                navigator.webkitGetUserMedia ||
-                navigator.mozGetUserMedia ||
-                navigator.msGetUserMedia
-              );
-              </code>
-            </pre>
+          <h2>What is it?</h2>
+            <p>getUserMedia prompts for permission to use a media device, like a camera or microphone</p>
         </section>
 
         <section>
-          <h1>What you can do with it</h1>
+          <img src="images/prompt.png" alt="Prompt for permission" /> 
         </section>
 
         <section>
-          <h1>You get video: Simple Example (1)</h1>
-          <h3>Check out this super cool example omg</h3>
+          <pre>
+            <code data-trim>
+              navigator.getUserMedia ( constraints, successCallback, errorCallback );
+            </code>
+          </pre>
         </section>
 
         <section>
-          <h1>You can modify the video: Simple Example (1)</h1>
-          <h3>Whooooah a video</h3>
+        <h3>constraints</h3>
+          <pre>
+            <code data-trim>
+             { video: true, audio: true } 
+            </code>
+          </pre>
+        <h3>successCallback</h3>
+          <pre>
+            <code data-trim>
+function(localMediaStream) {
+   var video = document.querySelector('video');
+   video.src = window.URL.createObjectURL(localMediaStream);
+   video.onloadedmetadata = function(e) {
+      // Do stuff with the video
+   };
+},
+            </code>
+          </pre>
         </section>
 
+        <section>
+        <h3>errorCallback</h3>
+          <pre>
+            <code data-trim>
+PERMISSION_DENIED - the user didn't grant permission
+NOT_SUPPORTED_ERROR - not supported by the browser
+MANDATORY_UNSATISFIED_ERROR - not found
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h1>Examples!</h1>
+        </section>
+
+        <section>
+        <a href="http://jsfiddle.net/codepo8/agaRe/4/"><h2>Taking a Photo</h2></a>
+          <p>via <a href="https://developer.mozilla.org/en-US/docs/WebRTC/taking_webcam_photos">Mozilla</a></p>
+        </section>
+
+        <section>
+        <a href="http://deshawnbw.github.io/getusermedia_canvas_output_modifcation/"><h2>Modifying Output</h2></a>
+          <p>via <a href="https://github.com/deshawnbw/getusermedia_canvas_output_modifcation/blob/master/assets/js/main.js">DeShawn</a></p>
+        </section>
+
+        <section>
+          <pre><code>
+var imageData = ctxInput.getImageData(0, 0, 640, 480);
+
+// Because of how the datastructure is defined above lets go
+// through every 4 pixels to be speedy.
+for (var i = 0; i < 640 * 480 * 4; i+=4) {
+  // Where the magic happens...
+
+  // The red pixel
+  imageData.data[i] = imageData.data[i];
+  // The green pixel, lets +100 it so the output is green.
+  imageData.data[i + 1] = imageData.data[i + 1] + 100;
+  // The blue pixel
+  imageData.data[i + 2] = imageData.data[i + 2];
+
+}
+    </code></pre>
+        </section>
         <section>
           <h1>WebRTC</h1>
-          <h3> What it is WEBRTC (1-2)</h3>
-          <h3>How does it work roughly?</h3>
         </section>
 
         <section>
-          <h1>    Simpler Explination (1)</h1>
+          <h2>What is WebRTC</h2>
+          <ul>
+            <li>Audio streaming!</li>
+            <li>Video streaming!</li>
+            <li>Much more!</li>
+          </ul>
         </section>
 
         <section>
-          <h1>    Show scary graph, throw out scary words (1)</h1>
+          <h2>Okay, what does it do?</h2>
+          <ul>
+            <li>Get streaming data</li>
+            <li>Get network information</li>
+            <li>Coordinate signalling between peers</li>
+            <li>Exchange information about capabilities</li>
+          </ul>
         </section>
 
         <section>
-          <h1>    There are libraries (1)</h1>
+          <h2>Tell me more...</h2>
+          <p>WebRTC has a few APIs:</p>
+          <ul>
+            <li>MediaStream (you've seen this!)</li>
+            <li>RTCPeerConnection</li>
+            <li>RTCDataChannel</li>
+          </ul>
         </section>
 
         <section>
-          <h1>      webrtc.io (2-?)</h1>
+          <h2>RTCPeerConnection</h2>
+          <img src="images/webrtc.png" alt="WebRTC, in all its glory" />
         </section>
 
         <section>
-          <h1>      mention additional libraries</h1>
+          <img src="images/dontpanic.jpg" alt="Don't Panic" />
         </section>
 
         <section>
-          <h1>Super Coolz demo (1)</h1>
+          <h1>There are libraries!</h1>
         </section>
 
         <section>
-          <h1>Super Coolz demo ? (1)</h1>
+          <h1>webrtc.io</h1>
         </section>
 
         <section>
-          <h1>Wrapup (1)</h1>
+        <pre><code><video id="local" autoplay="autoplay"></video>
+<video id="remote" autoplay="autoplay"></video>
+</code></pre>
+          <pre><code>rtc.connect('ws://yourserveraddress:8001');
+
+rtc.createStream({"video": true, "audio":false}, function(stream){
+  // get local stream for manipulation
+  rtc.attachStream(stream, 'local');
+});
+
+rtc.on('add remote stream', function(stream){
+  // show the remote video
+  rtc.attachStream(stream, 'remote');
+});</code></pre>
+<pre><code>var webRTC = require('webrtc.io').listen(8001);</code></pre>
         </section>
+
+        <section>
+          <h1>SimpleWebRTC</h1>
+        </section>
+
+        <section>
+          <h1>Demo!</h1>
+          <h3>Simple P2P Video, using <a href="http://jsfiddle.net/7R69F/1/">JavaScript</a></h3>
+        </section>
+
+        <section>
+          <h1>So... now what?</h1>
+        </section>
+
+        <section>
+          <ul>
+            <li>For simple video or audio, all you need is getUserMedia</li>
+            <li>For fancy stuff, you need WebRTC</li>
+            <li>You might want a library for that, such as SimpleWebRTC</li>
+          </ul>
+        </section>
+
         <section>
             <h1>Resources</h1>
         </section>
 
         <section>
-              <h1>links</h1>
+              <a href="https://developer.mozilla.org/en-US/docs/WebRTC/navigator.getUserMedia">MDN getUserMedia Documentation</a>
+              Getting Started with WebRTC
+              http://www.html5rocks.com/en/tutorials/webrtc/basics/
         </section>
 
-        <section>
-              <h1>slides</h1>
-        </section>
 				<section>
 					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
+					<h3>Dan Harden / @dharden / daniel.harden@gmail.com</h3>
 				</section>
 
 			</div>
