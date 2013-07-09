@@ -38,30 +38,49 @@
 			<div class="slides">
 				<section>
 					<h1>HTML5 Video APIs</h1>
+          <h3>Or, Can I Finally Just Uninstall Flash?</h3>
 					<p>
-						<small><a href="http://twitter.com/dharden">@dharden</a></small>
+						<small>Dan Harden - <a href="http://twitter.com/dharden">@dharden</a></small>
 					</p>
 				</section>
+
         <section>
-          <h3>What are we talking about?</h3>
+          <ul>
+            <li>Why?</li>
+            <li>Accessing your webcam for fun and profit</li>
+            <li>Manipulating your video source</li>
+            <li>The technology behind it all</li>
+            <li>Useful libraries</li>
+          </ul>
         </section>
 
         <section>
-        <h2>Warning!</h2>
-        <p>This is bleeding edge technology.</p>
-        <img src="images/bleedingedge.jpg" alt="Bleeding Edge" />
+          <h2>Why Use HTML5 Video?</h2>
+          <ul>
+            <li>No plugins!</li>
+            <li>Platform independence!</li>
+            <li>Because we can!</li>
+          </ul>
         </section>
+
+        <section>
+          <h2>Warning!</h2>
+          <p>This is bleeding edge technology.</p>
+        </section>
+
         <section>
           <h3>Spoilers: It doesn't work in Internet Explorer</h3>
+          <img src="images/sad-ie.png" alt="Awww..." />
         </section>
 
         <section>
+          <h2>Accessing your Webcam</h2>
           <h3>navigator.getUserMedia</h3>
         </section>
 
         <section>
           <h2>What is it?</h2>
-            <p>getUserMedia prompts for permission to use a media device, like a camera or microphone</p>
+            <p>getUserMedia lets you access cameras and microphones with JavaScript!</p>
         </section>
 
         <section>
@@ -108,6 +127,7 @@ MANDATORY_UNSATISFIED_ERROR - not found
           </pre>
         </section>
 
+
         <section>
           <h1>Examples!</h1>
         </section>
@@ -141,6 +161,11 @@ for (var i = 0; i < 640 * 480 * 4; i+=4) {
 }
     </code></pre>
         </section>
+
+        <section>
+        <h2><a href="http://shinydemos.com/getusermedia/">Shiny Demos</a></h2>
+        </section>
+
         <section>
           <h1>WebRTC</h1>
         </section>
@@ -219,6 +244,10 @@ rtc.on('add remote stream', function(stream){
         </section>
 
         <section>
+          <a href="http://beerumble.com/p2p.htm"><h3>http://beerumble.com/p2p.htm</h3></a>
+        </section>
+
+        <section>
           <h1>So... now what?</h1>
         </section>
 
@@ -235,14 +264,30 @@ rtc.on('add remote stream', function(stream){
         </section>
 
         <section>
-              <a href="https://developer.mozilla.org/en-US/docs/WebRTC/navigator.getUserMedia">MDN getUserMedia Documentation</a>
-              Getting Started with WebRTC
-              http://www.html5rocks.com/en/tutorials/webrtc/basics/
+          <h2>Documentation</h2>
+          <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/WebRTC/navigator.getUserMedia">MDN getUserMedia Documentation</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/WebRTC/MediaStream_API">MDN MediaStream API</a></li>
+            <li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">Getting Started with WebRTC</a></li>
+            <li><a href="http://www.webrtc.org/reference/architecture">WebRTC.org</a></li>
+            <li><a href="http://shinydemos.com/getusermedia/">Shiny Demos - getUserMedia</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>WebRTC Libraries</h2>
+          <ul>
+            <li><a href="https://github.com/webRTC/webRTC.io">webRTC.io</a></li>
+            <li><a href="http://simplewebrtc.com/">SimpleWebRTC</a></li>
+            <li><a href="https://github.com/peers/peerjs">peerjs</a></li>
+          </ul>
         </section>
 
 				<section>
-					<h1>THE END</h1>
-					<h3>Dan Harden / @dharden / daniel.harden@gmail.com</h3>
+          <h1>That's it!</h1>
+					<p>
+						<small>Dan Harden - <a href="http://twitter.com/dharden">@dharden</a></small>
+					</p>
 				</section>
 
 			</div>
